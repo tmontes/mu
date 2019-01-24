@@ -57,6 +57,16 @@ class PythonLexer(QsciLexerPython):
             return None
         return ' '.join(kws)
 
+    def wordCharacters(self):
+        import string
+        result = ''.join([
+            string.ascii_letters,
+            string.digits,
+            '_',
+            'áéíóú',
+        ]).encode('latin-1')
+        return result
+
 
 class EditorPane(QsciScintilla):
     """
@@ -68,7 +78,7 @@ class EditorPane(QsciScintilla):
 
     def __init__(self, path, text, newline=NEWLINE):
         super().__init__()
-        self.setUtf8(True)
+        self.setUtf8(False)
         self.path = path
         self.setText(text)
         self.newline = newline
@@ -135,7 +145,7 @@ class EditorPane(QsciScintilla):
         font = Font().load()
         self.setFont(font)
         # Generic editor settings
-        self.setUtf8(True)
+        self.setUtf8(False)
         self.setAutoIndent(True)
         self.setIndentationsUseTabs(False)
         self.setIndentationWidth(4)
