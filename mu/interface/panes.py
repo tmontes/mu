@@ -75,6 +75,7 @@ class JupyterREPLPane(RichJupyterWidget):
         super().__init__(parent)
         self.set_theme(theme)
         self.console_height = 10
+        self.enable_calltips = False
 
     def _append_plain_text(self, text, *args, **kwargs):
         """
