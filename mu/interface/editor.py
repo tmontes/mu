@@ -203,6 +203,7 @@ class EditorPane(QsciScintilla):
         """
         Sets the API entries for tooltips, calltips and the like.
         """
+        return
         self.api = QsciAPIs(self.lexer)
         for entry in api_definitions:
             self.api.add(entry)
