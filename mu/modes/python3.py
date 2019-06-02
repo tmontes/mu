@@ -28,6 +28,8 @@ from qtconsole.manager import QtKernelManager
 from qtconsole.client import QtKernelClient
 from PyQt5.QtCore import QObject, QThread, pyqtSignal
 
+from . import python3repl
+
 
 logger = logging.getLogger(__name__)
 
@@ -75,6 +77,8 @@ class KernelRunner(QObject):
             os.environ['PYTHONPATH'] = new_path
         logger.info("REPL PYTHONPATH: {}".format(os.environ['PYTHONPATH']))
         self.repl_kernel_manager = QtKernelManager()
+        python3repl.register_repl_kernel()
+        self.repl_kernel_manager.kernel_name = 'echo'
         self.repl_kernel_manager.start_kernel()
         self.repl_kernel_client = self.repl_kernel_manager.client()
         self.kernel_started.emit(self.repl_kernel_manager,
@@ -91,6 +95,7 @@ class KernelRunner(QObject):
         self.repl_kernel_client.stop_channels()
         self.repl_kernel_manager.shutdown_kernel(now=True)
         self.kernel_finished.emit()
+        python3repl.unregister_repl_kernel()
 
 
 class PythonMode(BaseMode):
