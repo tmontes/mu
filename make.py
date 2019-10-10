@@ -151,19 +151,8 @@ def tidy():
     """Tidy code with the 'black' formatter.
     """
     print("\nTidy")
-    for target in [
-        "setup.py",
-        "win_installer.py",
-        "make.py",
-        "mu",
-        "package",
-        "tests",
-        "utils",
-    ]:
-        return_code = subprocess.run([TIDY, "-l", "79", target]).returncode
-        if return_code != 0:
-            return return_code
-    return 0
+    # Do not change black arguments here. See pyproject.toml.                        
+    return subprocess.run([TIDY, "."]).returncode
 
 
 @export
@@ -171,21 +160,8 @@ def black():
     """Check code with the 'black' formatter.
     """
     print("\nTidy")
-    for target in [
-        "setup.py",
-        "win_installer.py",
-        "make.py",
-        "mu",
-        "package",
-        "tests",
-        "utils",
-    ]:
-        return_code = subprocess.run(
-            [TIDY, "--check", "-l", "79", target]
-        ).returncode
-        if return_code != 0:
-            return return_code
-    return 0
+    # Do not change black arguments here. See pyproject.toml.                        
+    return subprocess.run([TIDY, "--check", "."]).returncode
 
 
 @export

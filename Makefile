@@ -58,23 +58,13 @@ coverage: clean
 
 tidy: clean
 	@echo "\nTidying code with black..."
-	black -l 79 setup.py 
-	black -l 79 win_installer.py
-	black -l 79 make.py
-	black -l 79 mu 
-	black -l 79 package 
-	black -l 79 tests
-	black -l 79 utils
+	@# Do not change black arguments here. See pyproject.toml.
+	black .
 
 black: clean
 	@echo "\nChecking code with black..."
-	black --check -l 79 setup.py 
-	black --check -l 79 win_installer.py
-	black --check -l 79 make.py
-	black --check -l 79 mu 
-	black --check -l 79 package 
-	black --check -l 79 tests
-	black --check -l 79 utils
+	@# Do not change black arguments here. See pyproject.toml.
+	black --check .
 
 check: clean black flake8 coverage
 
