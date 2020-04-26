@@ -13,7 +13,6 @@ author_email = "ntoll@ntoll.org"
 [tool.briefcase.app.mu]
 formal_name = "Mu Editor"
 description = "A simple Python editor for beginner programmers."
-icon = "package/icons/mac_icon"
 sources = ['mu']
 requires = [
     'PyQt5==5.12.1;"arm" not in platform_machine',
@@ -39,11 +38,15 @@ requires = [
 
 
 [tool.briefcase.app.mu.macOS]
+icon = "package/icons/mac_icon"
 requires = []
 
 [tool.briefcase.app.mu.linux]
 requires = []
 
 [tool.briefcase.app.mu.windows]
-requires = []
+icon = "package/icons/win_icon"
+requires = [
+    "pywin32",
+]
 
