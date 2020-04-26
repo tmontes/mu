@@ -59,8 +59,6 @@ extras_require = {
         # Windows native packaging (see win_installer.py).
         'requests==2.21.0;platform_system == "Windows"',
         'yarg==0.1.9;platform_system == "Windows"',
-        # macOS native packaging (see Makefile)
-        'briefcase==0.2.9;platform_system == "Darwin"',
     ],
     "utils": ["scrapy", "beautifulsoup4", "requests"],
 }
